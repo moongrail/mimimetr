@@ -1,3 +1,3 @@
-INSERT INTO users (username,password)
+INSERT INTO cats (name, password)
 VALUES ('public','helloworld!')
 ON CONFLICT DO NOTHING ;

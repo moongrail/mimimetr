@@ -3,7 +3,7 @@ package com.example.mimimimetr.controller;
 
 import com.example.mimimimetr.dto.SignUpForm;
 import com.example.mimimimetr.exception.UniqueUsernameException;
-import com.example.mimimimetr.service.UserService;
+import com.example.mimimimetr.service.CatService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -20,7 +20,7 @@ import javax.validation.Valid;
 @Slf4j
 @RequiredArgsConstructor
 public class SignUpController {
-    private final UserService userService;
+    private final CatService catService;
 
     @GetMapping
     public String getSignUpPage(Model model) {
@@ -40,7 +40,7 @@ public class SignUpController {
         }
 
         try {
-            userService.signUpUser(form);
+            catService.signUpUser(form);
             return "redirect:/login";
         } catch (UniqueUsernameException e) {
             log.info("Caught UniqueUsernameException exception");

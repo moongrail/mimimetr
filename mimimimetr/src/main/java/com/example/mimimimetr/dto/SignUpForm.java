@@ -15,9 +15,10 @@ import javax.validation.constraints.Size;
 public class SignUpForm {
     @Size(min = 2, max = 20)
     @NotBlank
-    private String username;
+    private String name;
     @Size(min = 7, max = 20)
     @NotBlank
     @ValidPassword
     private String password;
+    private byte[] image;
 }
