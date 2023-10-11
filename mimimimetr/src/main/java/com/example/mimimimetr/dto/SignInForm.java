@@ -2,22 +2,22 @@ package com.example.mimimimetr.dto;
 
 import lombok.*;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 @Getter
-@ToString
+@Setter
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
-public class UserSignUpDto {
-    @NotEmpty
+@NoArgsConstructor
+@ToString
+public class SignInForm {
+    @Size(min = 2, max = 20)
     @NotBlank
-    @Size(min = 3, max = 20)
-    private String username;
-    @NotBlank
-    @NotEmpty
+    @Email
+    private String email;
     @Size(min = 7, max = 20)
+    @NotBlank
     private String password;
 }

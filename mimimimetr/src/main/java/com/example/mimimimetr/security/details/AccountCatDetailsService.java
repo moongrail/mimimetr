@@ -14,8 +14,8 @@ public class AccountCatDetailsService implements UserDetailsService {
     private final CatRepositoryJpa catRepositoryJpa;
 
     @Override
-    public UserDetails loadUserByUsername(String name) throws UsernameNotFoundException {
-        return new AccountCatDetails(catRepositoryJpa.findByName(name)
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        return new AccountCatDetails(catRepositoryJpa.findByEmail(email)
                 .orElseThrow(() -> new CatNotFoundException("Cat not found")));
     }
 }

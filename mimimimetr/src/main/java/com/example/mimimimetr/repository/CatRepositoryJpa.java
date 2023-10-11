@@ -8,5 +8,7 @@ import java.util.Optional;
 
 @Repository
 public interface CatRepositoryJpa extends JpaRepository<Cat, Long> {
-    Optional<Cat> findByName(String name);
+    Optional<Cat> findByEmail(String name);
+
+    boolean existsByEmail(String email);
 }

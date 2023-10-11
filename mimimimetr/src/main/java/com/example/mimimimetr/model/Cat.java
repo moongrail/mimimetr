@@ -19,8 +19,14 @@ public class Cat {
     @Column(unique = true, nullable = false)
     private String name;
     @Column(unique = true, nullable = false)
+    private String email;
+    @Column(unique = true, nullable = false)
     private String password;
-    private byte[] image;
+    private byte[] avatar;
     @Column(name = "rate_user")
     private Long rateUser;
+    @Enumerated(EnumType.STRING)
+    private CatRole role;
+    @Enumerated(EnumType.STRING)
+    private CatState state;
 }

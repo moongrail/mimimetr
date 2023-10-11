@@ -1,0 +1,35 @@
+version: '3.1'
+services:
+  mimimimetr:
+    build: ./mimimimetr
+    image: mimimimetr-image
+    container_name: mimimimetr-container
+    depends_on:
+      mimimimetr-db:
+        condition: service_healthy
+    ports:
+      - "80:80"
+    environment:
+      - STAT_URL_DB=jdbc:postgresql://mimimimetr-db:5432/mimimimetr
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=123
+#    restart: always
+
+  mimimimetr-db:
+    image: postgres:14-alpine
+    container_name: mimimimetr-db
+    ports:
+      - "5466:5432"
+    volumes:
+      - /var/lib/postgresql/data/
+    user: postgres
+    environment:
+      - POSTGRES_DB=mimimimetr
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=123
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: always

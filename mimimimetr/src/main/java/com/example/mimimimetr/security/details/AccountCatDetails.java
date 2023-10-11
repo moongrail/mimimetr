@@ -1,6 +1,7 @@
 package com.example.mimimimetr.security.details;
 
 import com.example.mimimimetr.model.Cat;
+import com.example.mimimimetr.model.CatState;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -9,35 +10,35 @@ import java.util.Collection;
 import java.util.Collections;
 
 public class AccountCatDetails implements UserDetails {
-    private final Cat cat;
+    private final Cat account;
 
-    public AccountCatDetails(Cat cat) {
-        this.cat = cat;
+    public AccountCatDetails(Cat account) {
+        this.account = account;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singleton(new SimpleGrantedAuthority("ROLE_USER"));
+        return Collections.singleton(new SimpleGrantedAuthority(account.getRole().name()));
     }
 
     @Override
     public String getPassword() {
-        return cat.getPassword();
+        return account.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return cat.getName();
+        return account.getEmail();
     }
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return !account.getState().equals(CatState.BANNED);
     }
 
     @Override
@@ -47,10 +48,6 @@ public class AccountCatDetails implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return true;
-    }
-
-    public Cat getCat() {
-        return cat;
+        return account.getState().equals(CatState.CONFIRMED);
     }
 }
