@@ -22,22 +22,18 @@ public class SignUpController {
     private final SignUpService signUpService;
 
     @GetMapping
-    public String getSignUpPage(Model model) {
+    public String getSignUpPage(Model model, Authentication auth) {
+        if (auth != null) {
+            return "redirect:/";
+        }
+
         log.info("Starting 'get /signUp'");
         model.addAttribute("signUpForm", new SignUpForm());
         return "signUp";
     }
 
     @PostMapping
-    public String signUp(@Valid SignUpForm signUpForm,
-                         BindingResult bindingResult,
-                         Model model,
-                         Authentication auth) {
-
-        if (auth != null) {
-            return "redirect:/";
-        }
-
+    public String signUp(@Valid SignUpForm signUpForm, BindingResult bindingResult, Model model) {
         log.info("Starting 'post /signUp'");
         if (bindingResult.hasErrors()) {
             model.addAttribute("signUpForm", signUpForm);

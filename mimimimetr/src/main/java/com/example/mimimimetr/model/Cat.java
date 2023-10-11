@@ -23,7 +23,7 @@ public class Cat {
     @Column(unique = true, nullable = false)
     private String password;
     private byte[] avatar;
-    @Column(name = "rate_user")
+    @Column(name = "rate_cat")
     private Long rateUser;
     @Enumerated(EnumType.STRING)
     private CatRole role;

@@ -12,7 +12,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     public static final String SIGNUP = "/signup";
-    public static final String PLAY = "/play";
+    public static final String PLAY = "/game";
     public static final String LOGIN = "/login";
     public static final String LOGIN_ERROR = "/login?error";
     public static final String HOME = "/";

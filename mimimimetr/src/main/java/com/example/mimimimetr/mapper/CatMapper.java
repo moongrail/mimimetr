@@ -15,6 +15,7 @@ public class CatMapper {
                 .avatar(signUpForm.getAvatar())
                 .role(CatRole.USER)
                 .state(CatState.CONFIRMED)
+                .rateUser(0L)
                 .build();
     }
 
