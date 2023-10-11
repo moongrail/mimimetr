@@ -12,7 +12,6 @@ public class CatMapper {
         return Cat.builder()
                 .name(signUpForm.getName())
                 .email(signUpForm.getEmail())
-                .avatar(signUpForm.getAvatar())
                 .role(CatRole.USER)
                 .state(CatState.CONFIRMED)
                 .rateUser(0L)

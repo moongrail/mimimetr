@@ -8,6 +8,9 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 
 import static com.example.mimimimetr.mapper.CatMapper.toCatSignUp;
 
@@ -27,6 +30,11 @@ public class SignUpServiceImpl implements SignUpService {
 
         Cat newCat = toCatSignUp(signUpForm);
         newCat.setPassword(passwordEncoder.encode(signUpForm.getPassword()));
+        try {
+            newCat.setAvatar(signUpForm.getAvatar().getBytes());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
         Cat save = catRepositoryJpa.save(newCat);
         log.info("New cat: {}", save);

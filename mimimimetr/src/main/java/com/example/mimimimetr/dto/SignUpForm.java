@@ -2,6 +2,7 @@ package com.example.mimimimetr.dto;
 
 import com.example.mimimimetr.validation.ValidPassword;
 import lombok.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -25,5 +26,5 @@ public class SignUpForm {
     @NotBlank
     @ValidPassword
     private String password;
-    private byte[] avatar;
+    private MultipartFile avatar;
 }

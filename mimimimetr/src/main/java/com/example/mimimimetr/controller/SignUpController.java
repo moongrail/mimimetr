@@ -11,8 +11,11 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+import java.io.IOException;
 
 @Controller
 @RequestMapping("/signup")
@@ -36,10 +39,16 @@ public class SignUpController {
     public String signUp(@Valid SignUpForm signUpForm, BindingResult bindingResult, Model model) {
         log.info("Starting 'post /signUp'");
         if (bindingResult.hasErrors()) {
+            log.error("Validation error");
+            log.error(bindingResult.getAllErrors().toString());
             model.addAttribute("signUpForm", signUpForm);
             return "signUp";
         }
-
+//        try {
+//            signUpForm.setAvatar(file.getBytes());
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
         signUpService.signUp(signUpForm);
         return "redirect:/login";
     }
