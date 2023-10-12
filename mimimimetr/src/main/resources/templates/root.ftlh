@@ -6,13 +6,19 @@
 </head>
 <body>
 <h1>Мимимиметр - Топ 10</h1>
-<#--<form action="/top" method="get">-->
-    <ul>
-        <#list topTenCatList as cat>
-            <li> ${cat.name} <img src="/images/${cat.id}" alt=""></li>
-        </#list>
-    </ul>
-<#--</form>-->
+<ul>
+    <#list topTenCatList as cat>
+        <li style="display: flex; align-items: center;">
+            ${cat_index + 1}.
+            <div style="margin-left: 5px;">
+                ${cat.name}
+            </div>
+            <div style="flex: 1;">
+                <img src="/images/${cat.id}" alt="" width="160" height="200" style="left: inherit; margin: 10px;">
+            </div>
+        </li>
+    </#list>
+</ul>
 
 </body>
 </html>

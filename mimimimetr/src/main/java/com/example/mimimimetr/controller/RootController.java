@@ -24,13 +24,4 @@ public class RootController {
         model.addAttribute("topTenCatList", catRootService.getTopTenCatList());
         return "root";
     }
-
-//    @GetMapping("/top")
-//    public String getTopListCat(Model model) {
-//        log.info("Starting 'get /top'");
-//        List<CatDto> topTenCatList = catRootService.getTopTenCatList();
-//        model.addAttribute("topTenCatList", topTenCatList);
-//        return "root";
-//    }
-
 }

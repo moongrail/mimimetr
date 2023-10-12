@@ -1,6 +1,7 @@
 package com.example.mimimimetr.dto;
 
 import com.example.mimimimetr.validation.ValidPassword;
+import com.sun.istack.NotNull;
 import lombok.*;
 import org.springframework.web.multipart.MultipartFile;
 
