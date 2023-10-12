@@ -1,7 +1,7 @@
 package com.example.mimimimetr.security.details;
 
-import com.example.mimimimetr.exception.CatNotFoundException;
-import com.example.mimimimetr.repository.CatRepositoryJpa;
+import com.example.mimimimetr.exception.EntityNotFoundException;
+import com.example.mimimimetr.repositories.CatRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -11,11 +11,11 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class AccountCatDetailsService implements UserDetailsService {
-    private final CatRepositoryJpa catRepositoryJpa;
+    private final CatRepository catRepository;
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        return new AccountCatDetails(catRepositoryJpa.findByEmail(email)
-                .orElseThrow(() -> new CatNotFoundException("Cat not found")));
+        return new AccountCatDetails(catRepository.findByEmail(email)
+                .orElseThrow(() -> new EntityNotFoundException("Cat not found")));
     }
 }

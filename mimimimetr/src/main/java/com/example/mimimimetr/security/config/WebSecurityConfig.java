@@ -10,12 +10,13 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-
+//TODO: Ldap in future.
     public static final String SIGNUP = "/signup";
-    public static final String PLAY = "/game";
+    public static final String GAME = "/game";
     public static final String LOGIN = "/login";
     public static final String LOGIN_ERROR = "/login?error";
     public static final String HOME = "/";
+    public static final String IMAGES = "/images/**";
 
     @Autowired
     private UserDetailsService userDetailsService;
@@ -36,11 +37,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers(SIGNUP).permitAll()
                 .antMatchers(HOME).permitAll()
-                .antMatchers(PLAY).authenticated()
+                .antMatchers(IMAGES).permitAll()
+                .antMatchers(GAME).authenticated()
                 .and()
                 .formLogin()
                 .loginPage(LOGIN)
-                .defaultSuccessUrl(PLAY)
+                .defaultSuccessUrl(GAME)
                 .failureUrl(LOGIN_ERROR)
                 .usernameParameter("email")
                 .passwordParameter("password")

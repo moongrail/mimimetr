@@ -44,11 +44,7 @@ public class SignUpController {
             model.addAttribute("signUpForm", signUpForm);
             return "signUp";
         }
-//        try {
-//            signUpForm.setAvatar(file.getBytes());
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
+
         signUpService.signUp(signUpForm);
         return "redirect:/login";
     }

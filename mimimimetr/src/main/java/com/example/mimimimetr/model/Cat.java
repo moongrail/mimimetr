@@ -22,9 +22,8 @@ public class Cat {
     private String email;
     @Column(unique = true, nullable = false)
     private String password;
-    private byte[] avatar;
     @Column(name = "rate_cat")
-    private Long rateUser;
+    private Long rateCat;
     @Enumerated(EnumType.STRING)
     private CatRole role;
     @Enumerated(EnumType.STRING)

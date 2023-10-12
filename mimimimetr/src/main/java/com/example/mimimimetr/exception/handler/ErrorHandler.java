@@ -1,6 +1,6 @@
 package com.example.mimimimetr.exception.handler;
 
-import com.example.mimimimetr.exception.CatNotFoundException;
+import com.example.mimimimetr.exception.EntityNotFoundException;
 import com.example.mimimimetr.exception.UniqueEmailCatException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -18,10 +18,10 @@ public class ErrorHandler {
         return e.getMessage();
     }
 
-    @ExceptionHandler(CatNotFoundException.class)
+    @ExceptionHandler(EntityNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ResponseBody
-    public String handleCatNotFoundException(CatNotFoundException e) {
+    public String handleCatNotFoundException(EntityNotFoundException e) {
         return e.getMessage();
     }
 }

@@ -1,10 +1,18 @@
 package com.example.mimimimetr.mapper;
 
+import com.example.mimimimetr.dto.CatDto;
+import com.example.mimimimetr.dto.CatGameDto;
 import com.example.mimimimetr.dto.SignUpForm;
 import com.example.mimimimetr.model.Cat;
 import com.example.mimimimetr.model.CatRole;
 import com.example.mimimimetr.model.CatState;
 import lombok.experimental.UtilityClass;
+
+import javax.management.Query;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+import java.util.stream.Collectors;
 
 @UtilityClass
 public class CatMapper {
@@ -14,7 +22,7 @@ public class CatMapper {
                 .email(signUpForm.getEmail())
                 .role(CatRole.USER)
                 .state(CatState.CONFIRMED)
-                .rateUser(0L)
+                .rateCat(0L)
                 .build();
     }
 
@@ -24,5 +32,31 @@ public class CatMapper {
                 .email(cat.getEmail())
                 .password(cat.getPassword())
                 .build();
+    }
+
+    public static CatDto catDtoFromCat(Cat cat) {
+        return CatDto.builder()
+                .id(cat.getId())
+                .name(cat.getName())
+                .rateCat(cat.getRateCat())
+                .build();
+    }
+
+    public static List<CatDto> catDtoListFromCats(List<Cat> cats) {
+        return cats.stream()
+                .map(CatMapper::catDtoFromCat)
+                .collect(Collectors.toList());
+    }
+
+    public static CatGameDto catGameDtoFromCat(Cat cat) {
+        return CatGameDto.builder()
+                .name(cat.getName())
+                .build();
+    }
+
+    public static Queue<CatGameDto> catGameDtoListFromCats(List<Cat> cats) {
+        return cats.stream()
+                .map(CatMapper::catGameDtoFromCat)
+                .collect(Collectors.toCollection(LinkedList::new));
     }
 }

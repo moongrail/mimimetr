@@ -8,19 +8,18 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Data
-@Entity
+@Entity(name = "cats_image")
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "cats_avatar")
-public class CatAvatar {
+public class CatImage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private byte[] content;
-//
-//    @OneToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "cat_id", nullable = false)
-//    private Cat cat_id;
+
+    @OneToOne
+    @JoinColumn(name = "cat_id", nullable = false)
+    private Cat cat;
 }
