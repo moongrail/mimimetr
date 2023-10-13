@@ -34,7 +34,6 @@ public class GameController {
         return "game";
     }
 
-    @PreAuthorize("isAuthenticated()")
     @PostMapping("/{catId}")
     public String submitVote(@PathVariable Long catId, @RequestParam("votedCatId") Long votedCatId) {
 //        Long currentUserId = getCurrentUserId();
