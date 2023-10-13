@@ -11,5 +11,4 @@ public interface CatGameService {
 
     Queue<CatGameDto> getCatListForGame(Long catId);
 
-
 }

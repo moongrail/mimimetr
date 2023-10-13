@@ -8,6 +8,6 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CatGameDto {
+    private Long id;
     private String name;
-    private byte[] avatar;
 }

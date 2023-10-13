@@ -13,6 +13,7 @@
 <h1>Страница регистрации</h1>
 <h2>Введите свои данные:</h2>
 <form action="/signup" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
     <@spring.bind path="signUpForm"/>
     <label for="name">Введите имя:</label>
     <@spring.formInput 'signUpForm.name' 'id="name" class="text" placeholder="Your name"'/>

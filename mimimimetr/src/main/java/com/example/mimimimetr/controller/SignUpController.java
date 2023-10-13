@@ -25,8 +25,8 @@ public class SignUpController {
     private final SignUpService signUpService;
 
     @GetMapping
-    public String getSignUpPage(Model model, Authentication auth) {
-        if (auth != null) {
+    public String getSignUpPage(Authentication authentication, Model model) {
+        if (authentication != null) {
             return "redirect:/";
         }
 

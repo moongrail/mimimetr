@@ -50,6 +50,7 @@ public class CatMapper {
 
     public static CatGameDto catGameDtoFromCat(Cat cat) {
         return CatGameDto.builder()
+                .id(cat.getId())
                 .name(cat.getName())
                 .build();
     }

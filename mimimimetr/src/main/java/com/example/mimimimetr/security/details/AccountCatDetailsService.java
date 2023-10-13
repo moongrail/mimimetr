@@ -3,6 +3,7 @@ package com.example.mimimimetr.security.details;
 import com.example.mimimimetr.exception.EntityNotFoundException;
 import com.example.mimimimetr.repositories.CatRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Primary;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
+@Primary
 public class AccountCatDetailsService implements UserDetailsService {
     private final CatRepository catRepository;
 

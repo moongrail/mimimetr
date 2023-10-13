@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Slf4j
 public class SignInController {
     @GetMapping
-    public String getSignInPage(Model model, Authentication auth) {
+    public String getSignInPage(Authentication auth,Model model) {
         if (auth != null) {
             return "redirect:/";
         }
