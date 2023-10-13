@@ -37,13 +37,10 @@ public class GameController {
     @PreAuthorize("isAuthenticated()")
     @PostMapping("/{catId}")
     public String submitVote(@PathVariable Long catId, @RequestParam("votedCatId") Long votedCatId) {
-//        // Get the current user's cat ID (you may need to modify this based on your authentication mechanism)
 //        Long currentUserId = getCurrentUserId();
 
-        // Update the cat's rating based on the user's vote
         catGameService.addLike(votedCatId);
 
-        // Redirect the user to the game page to continue voting
         return "redirect:/game/" + catId;
     }
 }
