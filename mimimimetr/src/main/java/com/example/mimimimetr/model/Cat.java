@@ -25,7 +25,7 @@ public class Cat {
     @Column(name = "rate_cat")
     private Long rateCat;
     @Enumerated(EnumType.STRING)
-    private CatRole role;
+    private Role role;
     @Enumerated(EnumType.STRING)
-    private CatState state;
+    private State state;
 }

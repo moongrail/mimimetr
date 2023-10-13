@@ -15,8 +15,8 @@ public interface CatRepository extends JpaRepository<Cat, Long> {
     Optional<Cat> findByEmail(String name);
 
     boolean existsByEmail(String email);
-
-    Page<Cat> findAll(Pageable pageable);
+    @Query("SELECT c FROM cats c ORDER BY c.rateCat DESC")
+    Page<Cat> findTop10(Pageable pageable);
 
     List<Cat> findAllByIdIsNot(Long catId);
 }

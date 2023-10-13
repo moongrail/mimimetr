@@ -27,5 +27,6 @@ public class SignUpForm {
     @NotBlank
     @ValidPassword
     private String password;
+    //TODO: validation format ...etc.
     private MultipartFile avatar;
 }

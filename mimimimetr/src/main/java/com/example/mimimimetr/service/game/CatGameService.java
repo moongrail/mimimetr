@@ -1,4 +1,4 @@
-package com.example.mimimimetr.service;
+package com.example.mimimimetr.service.game;
 
 import com.example.mimimimetr.dto.CatDto;
 import com.example.mimimimetr.dto.CatGameDto;

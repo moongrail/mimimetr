@@ -1,5 +1,5 @@
 package com.example.mimimimetr.model;
 
-public enum CatRole {
+public enum Role {
     USER, ADMIN
 }

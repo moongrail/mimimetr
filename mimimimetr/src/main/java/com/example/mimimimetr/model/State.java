@@ -1,5 +1,5 @@
 package com.example.mimimimetr.model;
 
-public enum CatState {
+public enum State {
     CONFIRMED, NOT_CONFIRMED, DELETED, BANNED
 }

@@ -2,6 +2,9 @@
 <#import "spring.ftl" as spring/>
 <head>
     <meta charset="UTF-8">
+    <a href="/login" style="left: 30px">Войти</a>
+    <a href="/signup" style="left: 30px">Зарегистрироваться</a>
+    <a href="/logout">Выйти</a>
     <title>Мимимиметр - Топ 10</title>
 </head>
 <body>

@@ -1,4 +1,4 @@
-package com.example.mimimimetr.service;
+package com.example.mimimimetr.service.image;
 
 import com.example.mimimimetr.exception.EntityNotFoundException;
 import com.example.mimimimetr.model.CatImage;

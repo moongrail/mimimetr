@@ -1,7 +1,7 @@
 package com.example.mimimimetr.security.details;
 
 import com.example.mimimimetr.model.Cat;
-import com.example.mimimimetr.model.CatState;
+import com.example.mimimimetr.model.State;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -38,7 +38,7 @@ public class AccountCatDetails implements UserDetails {
 
     @Override
     public boolean isAccountNonLocked() {
-        return !account.getState().equals(CatState.BANNED);
+        return !account.getState().equals(State.BANNED);
     }
 
     @Override
@@ -48,6 +48,6 @@ public class AccountCatDetails implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return account.getState().equals(CatState.CONFIRMED);
+        return account.getState().equals(State.CONFIRMED);
     }
 }

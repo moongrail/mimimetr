@@ -22,7 +22,7 @@ public class CatRootServiceImpl implements CatRootService {
         Pageable pageable = PageRequest.of(0,10, Sort.Direction.DESC, "rateCat");
 
         return  catDtoListFromCats(catRepository
-                .findAll(pageable)
+                .findTop10(pageable)
                 .getContent());
     }
 }

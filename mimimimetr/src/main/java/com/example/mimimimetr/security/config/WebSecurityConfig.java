@@ -57,6 +57,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HOME).permitAll()
                 .antMatchers(IMAGES).permitAll()
                 .antMatchers(GAME).authenticated()
+                .anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .loginPage(LOGIN)
@@ -70,8 +71,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutRequestMatcher(new AntPathRequestMatcher(LOGOUT))
                 .logoutSuccessUrl("/login?logout")
                 .deleteCookies("JSESSIONID")
-                .invalidateHttpSession(true)
-                .and();
+                .invalidateHttpSession(true);
     }
 
     @Bean

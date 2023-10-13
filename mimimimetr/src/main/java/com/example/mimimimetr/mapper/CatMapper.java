@@ -4,11 +4,10 @@ import com.example.mimimimetr.dto.CatDto;
 import com.example.mimimimetr.dto.CatGameDto;
 import com.example.mimimimetr.dto.SignUpForm;
 import com.example.mimimimetr.model.Cat;
-import com.example.mimimimetr.model.CatRole;
-import com.example.mimimimetr.model.CatState;
+import com.example.mimimimetr.model.Role;
+import com.example.mimimimetr.model.State;
 import lombok.experimental.UtilityClass;
 
-import javax.management.Query;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -20,8 +19,8 @@ public class CatMapper {
         return Cat.builder()
                 .name(signUpForm.getName())
                 .email(signUpForm.getEmail())
-                .role(CatRole.USER)
-                .state(CatState.CONFIRMED)
+                .role(Role.USER)
+                .state(State.CONFIRMED)
                 .rateCat(0L)
                 .build();
     }

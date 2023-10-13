@@ -1,6 +1,6 @@
 package com.example.mimimimetr.controller;
 
-import com.example.mimimimetr.service.CatImageService;
+import com.example.mimimimetr.service.image.CatImageService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -22,7 +22,7 @@ public class ImagesController {
         byte[] avatar = catImageService.getImage(catId);
 
         HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.IMAGE_JPEG);
+        headers.setContentType(MediaType.valueOf(MediaType.MULTIPART_FORM_DATA_VALUE));
         headers.setContentLength(avatar.length);
 
         return new ResponseEntity<>(avatar, headers, HttpStatus.OK);
