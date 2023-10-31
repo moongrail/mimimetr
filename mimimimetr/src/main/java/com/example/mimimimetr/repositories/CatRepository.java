@@ -19,4 +19,6 @@ public interface CatRepository extends JpaRepository<Cat, Long> {
     Page<Cat> findTop10(Pageable pageable);
 
     List<Cat> findAllByIdIsNot(Long catId);
+
+    Optional<Cat> findByToken(String token);
 }

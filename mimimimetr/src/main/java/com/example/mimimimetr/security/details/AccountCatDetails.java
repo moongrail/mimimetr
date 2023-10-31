@@ -50,4 +50,8 @@ public class AccountCatDetails implements UserDetails {
     public boolean isEnabled() {
         return account.getState().equals(State.CONFIRMED);
     }
+
+    public Cat getAccount() {
+        return account;
+    }
 }

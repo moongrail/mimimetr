@@ -54,7 +54,7 @@ public class CatMapper {
                 .build();
     }
 
-    public static Queue<CatGameDto> catGameDtoListFromCats(List<Cat> cats) {
+    public static List<CatGameDto> catGameDtoListFromCats(List<Cat> cats) {
         return cats.stream()
                 .map(CatMapper::catGameDtoFromCat)
                 .collect(Collectors.toCollection(LinkedList::new));

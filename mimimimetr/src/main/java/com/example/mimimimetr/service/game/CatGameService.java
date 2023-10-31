@@ -9,6 +9,6 @@ import java.util.Queue;
 public interface CatGameService {
     void addLike(Long catId);
 
-    Queue<CatGameDto> getCatListForGame(Long catId);
+    List<CatGameDto> getCatListForGame(Long catId);
 
 }

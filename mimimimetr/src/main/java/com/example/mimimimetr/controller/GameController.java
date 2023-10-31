@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Queue;
 
 @Controller
@@ -19,26 +20,24 @@ public class GameController {
     private final CatGameService catGameService;
 
     @PreAuthorize("isAuthenticated()")
-    @GetMapping("/{catId}")
-    public String playGame(@PathVariable Long catId, Model model) {
+    @GetMapping()
+    public String playGame( Model model) {
 
-        Queue<CatGameDto> catPairs = catGameService.getCatListForGame(catId);
-
-        if (catPairs.isEmpty()) {
-            return "redirect:/";
-        }
+        List<CatGameDto> catPairs = catGameService.getCatListForGame(1L);
 
         model.addAttribute("catPairs", catPairs);
 
         return "game";
     }
 
-    @PostMapping("/{catId}")
-    public String submitVote(@PathVariable Long catId, @RequestParam("votedCatId") Long votedCatId) {
+
+    @PostMapping()
+    public String submitVote(@RequestParam("votedCatId") Long votedCatId) {
 //        Long currentUserId = getCurrentUserId();
 
         catGameService.addLike(votedCatId);
 
-        return "redirect:/game/" + catId;
+        return "redirect:/game/";
     }
+
 }

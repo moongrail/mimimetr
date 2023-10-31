@@ -32,6 +32,7 @@
     <br>
     <label for="avatar">Загрузить аватар:</label>
     <input type="file" id="signUpForm.avatar" name="avatar" >
+    <@spring.showErrors '<br>' 'error' />
     <br>
     <br>
     <input type="submit" value="Зарегистрироваться">

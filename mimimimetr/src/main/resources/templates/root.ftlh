@@ -17,7 +17,7 @@
                 ${cat.name}
             </div>
             <div style="flex: 1;">
-                <img src="/images/${cat.id}" alt="" width="160" height="200" style="left: inherit; margin: 10px;">
+                <img src="/images/${cat.id}" alt="" width="150" height="150" style="left: inherit; margin: 10px;">
             </div>
         </li>
     </#list>

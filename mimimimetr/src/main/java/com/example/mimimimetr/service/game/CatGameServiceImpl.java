@@ -27,12 +27,10 @@ public class CatGameServiceImpl implements CatGameService {
     }
 
     @Override
-    public Queue<CatGameDto> getCatListForGame(Long catId) {
+    public List<CatGameDto> getCatListForGame(Long catId) {
         List<Cat> allByIdIsNot = catRepository.findAllByIdIsNot(catId);
         Collections.shuffle(allByIdIsNot);
 
         return catGameDtoListFromCats(allByIdIsNot);
     }
-
-
 }

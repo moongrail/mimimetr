@@ -1,6 +1,7 @@
 -- DROP TABLE IF EXISTS cats_image;
 -- DROP TABLE IF EXISTS cats;
 -- DROP TABLE IF EXISTS persistent_logins;
+-- DROP TABLE IF EXISTS token;
 
 CREATE TABLE IF NOT EXISTS cats
 (
@@ -11,6 +12,7 @@ CREATE TABLE IF NOT EXISTS cats
     rate_cat BIGINT DEFAULT 0,
     role     VARCHAR(10) NOT NULL,
     state    VARCHAR(15) NOT NULL,
+    token    VARCHAR(255),
     CONSTRAINT uq_email_cat UNIQUE (email)
 );
 
@@ -28,4 +30,4 @@ CREATE TABLE IF NOT EXISTS persistent_logins
     series   varchar(64) NOT NULL PRIMARY KEY,
     token    varchar(64) NOT NULL,
     last_used timestamp   NOT NULL
-)
+);
