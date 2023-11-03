@@ -20,8 +20,6 @@ public interface CatRepository extends JpaRepository<Cat, Long> {
     @Query("SELECT c FROM cats c ORDER BY c.rateCat DESC")
     Page<Cat> findTop10(Pageable pageable);
 
-    List<Cat> findAllByIdIsNot(Long catId);
-
     @Query(value = "SELECT * " +
             "FROM cats " +
             "WHERE email <> :email " +
