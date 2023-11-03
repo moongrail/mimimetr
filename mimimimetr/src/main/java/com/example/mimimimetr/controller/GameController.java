@@ -7,10 +7,13 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import java.security.Principal;
 import java.util.List;
-import java.util.Queue;
 
 @Controller
 @RequiredArgsConstructor
@@ -20,10 +23,14 @@ public class GameController {
     private final CatGameService catGameService;
 
     @PreAuthorize("isAuthenticated()")
-    @GetMapping()
-    public String playGame( Model model) {
+    @GetMapping
+    public String playGame(Model model, Principal principal) {
+        String email = principal.getName();
+        List<CatGameDto> catPairs = catGameService.getCatListForGame(email);
 
-        List<CatGameDto> catPairs = catGameService.getCatListForGame(1L);
+        if (catPairs.isEmpty()) {
+            return "redirect:/";
+        }
 
         model.addAttribute("catPairs", catPairs);
 
@@ -31,13 +38,11 @@ public class GameController {
     }
 
 
-    @PostMapping()
-    public String submitVote(@RequestParam("votedCatId") Long votedCatId) {
-//        Long currentUserId = getCurrentUserId();
+    @PostMapping("/vote")
+    public String submitVote(Principal principal, @RequestParam("votedCatId") Long votedCatId) {
+        String emailCurrentUser = principal.getName();
+        catGameService.addLike(emailCurrentUser, votedCatId);
 
-        catGameService.addLike(votedCatId);
-
-        return "redirect:/game/";
+        return "redirect:/game";
     }
-
 }

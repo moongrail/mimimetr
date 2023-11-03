@@ -17,18 +17,18 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor
 @ToString
 public class SignUpForm {
-    @Size(min = 2, max = 20)
-    @NotBlank
+    @Size(min = 2, max = 20, message = "Name must be between 2 and 20 characters")
+    @NotBlank(message = "Name cannot be blank")
     private String name;
-    @Size(min = 2, max = 20)
-    @NotBlank
-    @Email
+    @Size(min = 7, max = 40, message = "email must be between 7 and 40 characters")
+    @NotBlank(message = "email cannot be blank")
+    @Email(message = "Email must be valid")
     private String email;
-    @Size(min = 7, max = 20)
-    @NotBlank
+    @Size(min = 7, max = 20, message = "password must be between 7 and 20 characters")
+    @NotBlank(message = "password cannot be blank")
     @ValidPassword
     private String password;
-    @ValidAvatar
-    @NotNull
+    @ValidAvatar(message = "Avatar must be valid. Only .png and .jpg files are allowed.")
+    @NotNull(message = "Avatar cannot be null")
     private MultipartFile avatar;
 }

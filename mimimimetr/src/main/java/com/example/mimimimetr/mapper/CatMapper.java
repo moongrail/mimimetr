@@ -59,4 +59,10 @@ public class CatMapper {
                 .map(CatMapper::catGameDtoFromCat)
                 .collect(Collectors.toCollection(LinkedList::new));
     }
+
+    public static Queue<CatGameDto> convertToCatGameDtoQueue(List<Cat> cats) {
+        return cats.stream()
+                .map(CatMapper::catGameDtoFromCat)
+                .collect(Collectors.toCollection(LinkedList::new));
+    }
 }

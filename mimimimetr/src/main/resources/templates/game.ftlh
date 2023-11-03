@@ -1,25 +1,47 @@
 <!DOCTYPE html>
-<#import "spring.ftl" as spring/>
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
 <head>
-    <meta charset="UTF-8">
+    <title>Мимиметр лайкер котиков</title>
     <a href="/logout">Выйти</a>
-    <title>Мимимиметр</title>
-</head>
+    <style>
+        .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 40vh;
+        }
 
+        ul {
+            display: flex;
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-right: 60px;
+        }
+    </style>
+</head>
 <body>
-<h1>Vote for the Cutest Cat!</h1>
-<form action="/game/{catId}" method="post">
-    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-    <div th:each="catPair : ${catPairs}">
-        <h2>Cat 1: ${catPair.name}</h2>
-        <a th:href="@{/images/{catId}(catId=${catPair.id})}">
-            <img th:href="@{/images/{catId}(catId=${catPair.id})}" alt="Cat 1" width="150" height="200">
-        </a>
-        <input type="radio" name="votedCatId" th:value="${catPair.id}"> Vote for Cat 1<br>
-        <hr>
-    </div>
-    <button type="submit">Submit Vote</button>
-</form>
+<h1>Мимиметр лайкер котиков и Рами Маликова</h1>
+<div class="center">
+    <ul>
+        <#list catPairs as catPair>
+            <li>
+                <a href="/images/${catPair.id}">
+                    <a href="/images/${catPair.id}">
+                        <img src="/images/${catPair.id}" alt="Cat 1" width="150" height="200">
+                    </a>
+                    <div>${catPair.name}</div>
+                    <form action="/game/vote" method="post">
+                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+                        <input type="hidden" name="votedCatId" value="${catPair.id}">
+                        <button type="submit">Like</button>
+                    </form>
+                </a>
+            </li>
+        </#list>
+    </ul>
+</div>
 </body>
 </html>

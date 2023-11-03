@@ -1,27 +1,17 @@
 package com.example.mimimimetr.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import java.util.List;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity(name = "cats")
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode(exclude = "likes")
 public class Cat {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,5 +28,6 @@ public class Cat {
     private Role role;
     @Enumerated(EnumType.STRING)
     private State state;
-    private String token;
+    @OneToMany(mappedBy = "cat", fetch = FetchType.LAZY)
+    private Set<Like> likes = new HashSet<>();
 }

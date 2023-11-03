@@ -19,9 +19,9 @@ public class CatRootServiceImpl implements CatRootService {
 
     @Override
     public List<CatDto> getTopTenCatList() {
-        Pageable pageable = PageRequest.of(0,10, Sort.Direction.DESC, "rateCat");
+        Pageable pageable = PageRequest.of(0, 10, Sort.Direction.DESC, "rateCat");
 
-        return  catDtoListFromCats(catRepository
+        return catDtoListFromCats(catRepository
                 .findTop10(pageable)
                 .getContent());
     }

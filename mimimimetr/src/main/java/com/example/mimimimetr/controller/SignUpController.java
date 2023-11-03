@@ -38,7 +38,7 @@ public class SignUpController {
         if (errors.hasErrors()) {
             log.error("Validation error");
             log.error(errors.getAllErrors().toString());
-            model.addAttribute("signUpForm", signUpForm);
+            model.addAttribute("errors", errors);
             return "signUp";
         }
 

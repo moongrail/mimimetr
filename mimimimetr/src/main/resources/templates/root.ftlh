@@ -8,6 +8,9 @@
     <title>Мимимиметр - Топ 10</title>
 </head>
 <body>
+<div align="center">
+    <a href="/game">ПОСТАВИТЬ ЛАЙКИ КОТИКАМ</a>
+</div>
 <h1>Мимимиметр - Топ 10</h1>
 <ul>
     <#list topTenCatList as cat>

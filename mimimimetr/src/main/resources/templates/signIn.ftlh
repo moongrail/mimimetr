@@ -2,6 +2,7 @@
 <#import "spring.ftl" as spring/>
 <head>
     <meta charset="UTF-8">
+    <a href="/signup" style="left: 30px">Зарегистрироваться</a>
     <title>SignIn</title>
     <style>
         .error {
@@ -12,7 +13,7 @@
 <body>
 <h1>Авторизуйтесь, чтобы продолжить</h1>
 <h2>Введите свой email и пароль</h2>
-<form action="/api/login" method="post" enctype="application/json">
+<form action="/login" method="post">
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
     <@spring.bind path="signInForm"/>
     <p class="error">${spring.status.errorMessage}</p>
