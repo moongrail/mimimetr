@@ -16,7 +16,6 @@ import javax.sql.DataSource;
 
 @Configuration
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-    //TODO: Ldap in future.
     public static final String SIGNUP = "/signup";
     public static final String GAME = "/game/**";
     public static final String LOGIN = "/login";
