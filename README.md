@@ -9,7 +9,7 @@
 
 #### Запуск
 
-- mvn build -> docker-compose up
+- mvn package -> docker-compose up
 - Тестовый аккаунт -u cat1@example.com -p 123456!
 
 #### HTTP
