@@ -28,7 +28,7 @@ public class GameController {
         String email = principal.getName();
         List<CatGameDto> catPairs = catGameService.getCatListForGame(email);
 
-        if (catPairs.isEmpty()) {
+        if (catPairs.size() == 1) {
             return "redirect:/";
         }
 
